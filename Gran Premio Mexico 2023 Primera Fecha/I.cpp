@@ -50,7 +50,8 @@ const int MOD = 1e9 + 7;
 const int MAXN = 1e5 + 5;
 const int INF = 1 << 28;
 const ll LLINF = 1e18;
-const int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1}; // abajo, derecha, arriba, izquierda
+const int dx[4] = {1, 0, -1, 0},
+          dy[4] = {0, 1, 0, -1};  // abajo, derecha, arriba, izquierda
 
 template <class T>
 using pqg = priority_queue<T, vector<T>, greater<T>>;
@@ -70,8 +71,7 @@ int main() {
 
     int i = 1;
     while (i != n) {
-        if (word[n * 2 - 1] != word[0])
-            break;
+        if (word[n * 2 - 1] != word[0]) break;
         string word2 = word.substr(0, n * 2 - 1);
         word = word[n * 2 - 1] + word2;
         i++;
@@ -118,9 +118,7 @@ int main() {
     string cadena = "";
     cout << res << ENDL;
     FOR(i, ans.f, ans.s + 1) {
-        F0R(j, pares[i].s) {
-            cadena += pares[i].f;
-        }
+        F0R(j, pares[i].s) { cadena += pares[i].f; }
     }
     cout << cadena << ENDL;
 

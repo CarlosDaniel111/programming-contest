@@ -50,7 +50,8 @@ const int MOD = 1e9 + 7;
 const int MAXN = 1e6 + 5;
 const int INF = 1 << 28;
 const ll LLINF = 1e18;
-const int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1}; // abajo, derecha, arriba, izquierda
+const int dx[4] = {1, 0, -1, 0},
+          dy[4] = {0, 1, 0, -1};  // abajo, derecha, arriba, izquierda
 
 template <class T>
 using pqg = priority_queue<T, vector<T>, greater<T>>;
@@ -62,8 +63,7 @@ void buildPi(vi &p, vi &pi) {
     pi = vi(p.size());
     int k = -2;
     for (int i = 0; i < p.size(); i++) {
-        while (k >= -1 && p[k + 1] != p[i])
-            k = (k == -1) ? -2 : pi[k];
+        while (k >= -1 && p[k + 1] != p[i]) k = (k == -1) ? -2 : pi[k];
         pi[i] = ++k;
     }
 }
@@ -73,8 +73,7 @@ void KMP(vi &t, vi &p) {
     buildPi(p, pi);
     int k = -1;
     for (int i = 0; i < t.size(); i++) {
-        while (k >= -1 && p[k + 1] != t[i])
-            k = (k == -1) ? -2 : pi[k];
+        while (k >= -1 && p[k + 1] != t[i]) k = (k == -1) ? -2 : pi[k];
         k++;
         if (k == p.size() - 1) {
             // p matches t[i-m+1, ..., i]
@@ -94,15 +93,13 @@ int main() {
     vi diff2;
     F0R(i, n) {
         cin >> arr1[i];
-        if (i == 0)
-            continue;
+        if (i == 0) continue;
         diff1.pb(arr1[i] - arr1[i - 1]);
     }
 
     F0R(i, m) {
         cin >> arr2[i];
-        if (i == 0)
-            continue;
+        if (i == 0) continue;
         diff2.pb(arr2[i] - arr2[i - 1]);
     }
 

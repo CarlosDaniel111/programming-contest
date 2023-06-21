@@ -34,10 +34,7 @@ using vpd = vector<pd>;
 #define eb emplace_back
 #define lb lower_bound
 #define ub upper_bound
-#define tcT            \
-    template <class T  \
-                  tcT> \
-    int lwb(V<T> &a, const T &b) { return int(lb(all(a), b) - bg(a)); }
+tcT > int lwb(vector<T> &a, const T &b) { return int(lb(all(a), b) - bg(a)); }
 
 // loops
 #define FOR(i, a, b) for (int i = (a); i < (b); ++i)
@@ -59,7 +56,7 @@ using pqg = priority_queue<T, vector<T>, greater<T>>;
 using edge = tuple<int, ll, ll>;
 
 class max_flow {
-  private:
+   private:
     int V;
     vector<edge> EL;
     vector<vi> AL;
@@ -75,8 +72,7 @@ class max_flow {
         while (sz(q)) {
             int u = q.front();
             q.pop();
-            if (t[u])
-                return 1;
+            if (t[u]) return 1;
             for (auto &idx : AL[u]) {
                 auto &[v, cap, flow] = EL[idx];
                 if ((cap - flow > 0) && (d[v] == -1))
@@ -87,12 +83,10 @@ class max_flow {
     }
 
     ll DFS(int u, ll f = LLINF) {
-        if (t[u] || (f == 0))
-            return f;
+        if (t[u] || (f == 0)) return f;
         for (int &i = last[u]; i < sz(AL[u]); i++) {
             auto &[v, cap, flow] = EL[AL[u][i]];
-            if (d[v] != d[u] + 1)
-                continue;
+            if (d[v] != d[u] + 1) continue;
             if (ll pushed = DFS(v, min(f, cap - flow))) {
                 flow += pushed;
                 auto &rflow = get<2>(EL[AL[u][i] ^ 1]);
@@ -103,15 +97,14 @@ class max_flow {
         return 0;
     }
 
-  public:
+   public:
     max_flow(int initialV, vector<bool> &aux_t) : V(initialV), t(aux_t) {
         EL.clear();
         AL.assign(V, vi());
     }
 
     void add_edge(int u, int v, bool directed = true) {
-        if (u == v)
-            return;
+        if (u == v) return;
         EL.emplace_back(v, 1, 0);
         AL[u].pb(sz(EL) - 1);
         EL.emplace_back(u, 0, 0);
@@ -122,8 +115,7 @@ class max_flow {
         ll mf = 0;
         while (BFS(s)) {
             last.assign(V, 0);
-            while (ll f = DFS(s, s))
-                mf += f;
+            while (ll f = DFS(s, s)) mf += f;
         }
         return mf;
     }
@@ -155,8 +147,7 @@ int main() {
     F0R(i, n)
     MF.add_edge(i + n, i, 1);
 
-    for (auto u : start_nodes)
-        MF.add_edge(2 * n, u + n);
+    for (auto u : start_nodes) MF.add_edge(2 * n, u + n);
 
     int m;
     cin >> m;

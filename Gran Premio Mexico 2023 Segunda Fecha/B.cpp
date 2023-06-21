@@ -50,7 +50,8 @@ const int MOD = 1e9 + 7;
 const int MAXN = 1e6 + 5;
 const int INF = 1 << 28;
 const ll LLINF = 1e18;
-const int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1}; // abajo, derecha, arriba, izquierda
+const int dx[4] = {1, 0, -1, 0},
+          dy[4] = {0, 1, 0, -1};  // abajo, derecha, arriba, izquierda
 
 template <class T>
 using pqg = priority_queue<T, vector<T>, greater<T>>;
@@ -59,8 +60,7 @@ ll fastpow(ll a, ll b, ll m) {
     ll res = 1;
     a %= m;
     while (b) {
-        if (b & 1)
-            res = (res * a) % m;
+        if (b & 1) res = (res * a) % m;
         a = (a * a) % m;
         b >>= 1;
     }
@@ -78,9 +78,7 @@ int main() {
     int n, k;
     cin >> n >> k;
     ll numerador = 1;
-    FOR(i, 2, n + 1) {
-        numerador = numerador * i % MOD;
-    }
+    FOR(i, 2, n + 1) { numerador = numerador * i % MOD; }
     ll denominador = 1;
     unordered_map<int, int> mapa;
     F0R(i, n) {

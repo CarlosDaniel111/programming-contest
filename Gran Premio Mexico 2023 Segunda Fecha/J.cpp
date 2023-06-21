@@ -50,7 +50,8 @@ const int MOD = 1e9 + 7;
 const int MAXN = 1e5 + 5;
 const int INF = 1 << 28;
 const ll LLINF = 1e18;
-const int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1}; // abajo, derecha, arriba, izquierda
+const int dx[4] = {1, 0, -1, 0},
+          dy[4] = {0, 1, 0, -1};  // abajo, derecha, arriba, izquierda
 
 template <class T>
 using pqg = priority_queue<T, vector<T>, greater<T>>;
@@ -62,18 +63,16 @@ set<pair<int, int>> puentes;
 bool nodesValid[MAXN];
 bool visited[MAXN];
 
-struct DSU { // Indice base 0
+struct DSU {  // Indice base 0
     vi e;
     void init(int N) { e = vi(N, -1); }
     int get(int x) { return e[x] < 0 ? x : e[x] = get(e[x]); }
     bool sameSet(int a, int b) { return get(a) == get(b); }
     int size(int x) { return -e[get(x)]; }
-    bool unite(int x, int y) { // union by size
+    bool unite(int x, int y) {  // union by size
         x = get(x), y = get(y);
-        if (x == y)
-            return 0;
-        if (e[x] > e[y])
-            swap(x, y);
+        if (x == y) return 0;
+        if (e[x] > e[y]) swap(x, y);
         e[x] += e[y];
         e[y] = x;
         return 1;
@@ -85,8 +84,7 @@ DSU UF;
 void check_bridge(int u, int p = -1) {
     tin[u] = low[u] = timer++;
     for (int to : graph[u]) {
-        if (to == p)
-            continue;
+        if (to == p) continue;
         if (tin[to] != -1)
             low[u] = min(low[u], tin[to]);
         else {
@@ -110,8 +108,7 @@ bool check_cycle(int u) {
 
 void createDSU(int u, int p = -1) {
     for (int to : graph[u]) {
-        if (to == p)
-            continue;
+        if (to == p) continue;
         if (!visited[to] && nodesValid[to]) {
             UF.unite(u, to);
             createDSU(to, u);
@@ -145,9 +142,7 @@ int main() {
         }
     }
 
-    F0R(i, n) {
-        nodesValid[i] = check_cycle(i);
-    }
+    F0R(i, n) { nodesValid[i] = check_cycle(i); }
 
     UF.init(n);
 

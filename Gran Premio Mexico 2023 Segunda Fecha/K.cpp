@@ -50,7 +50,8 @@ const int MOD = 1e9 + 7;
 const int MAXN = 1e3 + 5;
 const int INF = 1 << 28;
 const ll LLINF = 1e18;
-const int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1}; // abajo, derecha, arriba, izquierda
+const int dx[4] = {1, 0, -1, 0},
+          dy[4] = {0, 1, 0, -1};  // abajo, derecha, arriba, izquierda
 
 template <class T>
 using pqg = priority_queue<T, vector<T>, greater<T>>;
@@ -64,15 +65,15 @@ int main() {
     int n, k;
     cin >> n >> k;
     F0R(i, n) {
-        F0R(j, n) {
-            cin >> grid[i][j];
-        }
+        F0R(j, n) { cin >> grid[i][j]; }
     }
 
     int ans = 0;
     F0R(i, n - k + 1) {
         F0R(j, n - k + 1) {
-            if (grid[i][j] == grid[i + k - 1][j] && grid[i][j] == grid[i][j + k - 1] && grid[i][j] == grid[i + k - 1][j + k - 1])
+            if (grid[i][j] == grid[i + k - 1][j] &&
+                grid[i][j] == grid[i][j + k - 1] &&
+                grid[i][j] == grid[i + k - 1][j + k - 1])
                 ans++;
         }
     }

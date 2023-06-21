@@ -40,4 +40,4 @@
 - [**K**: Knockout Spell ⭐](https://github.com/CarlosDaniel111/programming-contest/blob/master/Gran%20Premio%20Mexico%202023%20Segunda%20Fecha/K.cpp)
 - [**L**: ICPC Teams ⭐](https://github.com/CarlosDaniel111/programming-contest/blob/master/Gran%20Premio%20Mexico%202023%20Segunda%20Fecha/L.cpp)
 - [**M**: Modify the Array ⭐](https://github.com/CarlosDaniel111/programming-contest/blob/master/Gran%20Premio%20Mexico%202023%20Segunda%20Fecha/M.cpp)
-- **N**: Necklace (**No resuelto aún**)
+- [**N**: Necklace ⭐](https://github.com/CarlosDaniel111/programming-contest/blob/master/Gran%20Premio%20Mexico%202023%20Segunda%20Fecha/N.cpp)

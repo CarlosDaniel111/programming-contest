@@ -50,22 +50,17 @@ const int MOD = 1e9 + 7;
 const int MAXN = 1e6 + 5;
 const int INF = 1 << 28;
 const ll LLINF = 1e18;
-const int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1}; // abajo, derecha, arriba, izquierda
+const int dx[4] = {1, 0, -1, 0},
+          dy[4] = {0, 1, 0, -1};  // abajo, derecha, arriba, izquierda
 
 template <class T>
 using pqg = priority_queue<T, vector<T>, greater<T>>;
 
-ll sum(ll a, ll b) {
-    return (a + b) % MOD;
-}
+ll sum(ll a, ll b) { return (a + b) % MOD; }
 
-ll sub(ll a, ll b) {
-    return ((a - b) + MOD) % MOD;
-}
+ll sub(ll a, ll b) { return ((a - b) + MOD) % MOD; }
 
-ll mul(ll a, ll b) {
-    return (a * b) % MOD;
-}
+ll mul(ll a, ll b) { return (a * b) % MOD; }
 
 ll suma[MAXN];
 int arr[MAXN];

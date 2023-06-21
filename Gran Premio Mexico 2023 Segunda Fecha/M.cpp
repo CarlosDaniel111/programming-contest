@@ -50,7 +50,8 @@ const int MOD = 998244353;
 const int MAXN = 5 * 1e3 + 5;
 const int INF = 1 << 28;
 const ll LLINF = 1e18;
-const int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1}; // abajo, derecha, arriba, izquierda
+const int dx[4] = {1, 0, -1, 0},
+          dy[4] = {0, 1, 0, -1};  // abajo, derecha, arriba, izquierda
 
 template <class T>
 using pqg = priority_queue<T, vector<T>, greater<T>>;
@@ -60,12 +61,10 @@ int arr[MAXN];
 int arrmin[MAXN];
 int n;
 ll f(int x) {
-    if (x == (n - 1))
-        return 1;
+    if (x == (n - 1)) return 1;
 
     ll &ans = dp[x];
-    if (ans != -1)
-        return ans;
+    if (ans != -1) return ans;
 
     ans = (arr[x] == arrmin[x]);
     int minimo = INF;
@@ -85,13 +84,9 @@ int main() {
 
     memset(dp, -1, sizeof(dp));
     cin >> n;
-    F0R(i, n) {
-        cin >> arr[i];
-    }
+    F0R(i, n) { cin >> arr[i]; }
     arrmin[n - 1] = arr[n - 1];
-    R0F(i, n - 1) {
-        arrmin[i] = min(arrmin[i + 1], arr[i]);
-    }
+    R0F(i, n - 1) { arrmin[i] = min(arrmin[i + 1], arr[i]); }
 
     ll res = 0;
     int minimo = INF;

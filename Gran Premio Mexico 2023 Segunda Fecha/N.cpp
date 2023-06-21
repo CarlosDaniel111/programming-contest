@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 using ll = long long;
 using ull = unsigned long long;
 
@@ -56,21 +55,53 @@ const int dx[4] = {1, 0, -1, 0},
 template <class T>
 using pqg = priority_queue<T, vector<T>, greater<T>>;
 
+ll type[MAXN];
+ll a[MAXN];
+ll n, k;
+ll dp[MAXN][105];
+
+ll solve(ll l, ll r, ll p, ll c, ll t) {
+    if (t == n || t == k) {
+        return c;
+    }
+    l = (l == -1 ? n - 1 : l);
+    r = (r == n ? 0 : r);
+    ll &ans = dp[l][t];
+    if (ans != -1) return ans;
+
+    ll left = 0, right = 0;
+    if (type[l] == 1) {
+        left = solve(l - 1, r, p + a[l], c, t + 1);
+    } else {
+        if (a[l] <= p) {
+            left = solve(l - 1, r, p - a[l], c + a[l], t + 1);
+        }
+    }
+
+    if (type[r] == 1) {
+        right = solve(l, r + 1, p + a[r], c, t + 1);
+    } else {
+        if (a[r] <= p) {
+            right = solve(l, r + 1, p - a[r], c + a[r], t + 1);
+        }
+    }
+
+    return ans = max({c, left, right});
+}
+
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(nullptr);
 
-    int n;
-    string numeros;
-    cin >> n;
-    cin >> numeros;
-    int ans = 0;
-    F0R(i, n) {
-        // 1,2,3,4,5,7
-        if (numeros[i] != '6' && numeros[i] != '8' && numeros[i] != '0') {
-            ans++;
-        }
-    }
+    memset(dp, -1, sizeof(dp));
+
+    cin >> n >> k;
+    F0R(i, n) { cin >> a[i]; }
+    F0R(i, n) { cin >> type[i]; }
+
+    ll ans = 0;
+    F0R(i, n) { ans = max(ans, solve(i, (i + 1) % n, 0, 0, 0)); }
+
     cout << ans << ENDL;
 
     return 0;

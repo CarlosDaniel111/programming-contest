@@ -50,7 +50,8 @@ const int MOD = 1e9 + 7;
 const int MAXN = 1e5 + 5;
 const int INF = 1 << 28;
 const ll LLINF = 1e18;
-const int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1}; // abajo, derecha, arriba, izquierda
+const int dx[4] = {1, 0, -1, 0},
+          dy[4] = {0, 1, 0, -1};  // abajo, derecha, arriba, izquierda
 
 template <class T>
 using pqg = priority_queue<T, vector<T>, greater<T>>;
@@ -60,13 +61,13 @@ vl tree[MAXN];
 vl euler;
 
 class LazySegmentTree {
-  private:
+   private:
     int n;
     vl A, lazy;
     vpl st;
 
-    int l(int p) { return (p << 1) + 1; } // ir al hijo izquierdo
-    int r(int p) { return (p << 1) + 2; } // ir al hijo derecho
+    int l(int p) { return (p << 1) + 1; }  // ir al hijo izquierdo
+    int r(int p) { return (p << 1) + 2; }  // ir al hijo derecho
 
     void build(int index, int start, int end) {
         if (start == end) {
@@ -97,8 +98,7 @@ class LazySegmentTree {
 
     void update(int index, int start, int end, int i, int j, ll val) {
         propagate(index, start, end);
-        if ((end < i) || (start > j))
-            return;
+        if ((end < i) || (start > j)) return;
 
         if (start >= i && end <= j) {
             st[index].first += val;
@@ -122,10 +122,8 @@ class LazySegmentTree {
 
     pl query(int index, int start, int end, int i, int j) {
         propagate(index, start, end);
-        if (end < i || start > j)
-            return {-LLINF, 0};
-        if ((i <= start) && (end <= j))
-            return st[index];
+        if (end < i || start > j) return {-LLINF, 0};
+        if ((i <= start) && (end <= j)) return st[index];
 
         int mid = (start + end) / 2;
 
@@ -139,10 +137,13 @@ class LazySegmentTree {
         }
     }
 
-  public:
-    LazySegmentTree(int sz) : n(sz), st(4 * n), lazy(4 * n) {} // Constructor de st sin valores
+   public:
+    LazySegmentTree(int sz)
+        : n(sz), st(4 * n), lazy(4 * n) {}  // Constructor de st sin valores
 
-    LazySegmentTree(const vl &initialA) : LazySegmentTree((int)initialA.size()) { // Constructor de st con arreglo inicial
+    LazySegmentTree(const vl &initialA)
+        : LazySegmentTree(
+              (int)initialA.size()) {  // Constructor de st con arreglo inicial
         A = initialA;
         build(0, 0, n - 1);
     }
@@ -154,8 +155,7 @@ class LazySegmentTree {
 
 int eulerTour(int u) {
     euler.pb(u);
-    if (tree[u].size() == 0)
-        return u;
+    if (tree[u].size() == 0) return u;
 
     for (auto v : tree[u]) {
         int temp = eulerTour(v);
@@ -184,10 +184,8 @@ int main() {
 
     int temp = eulerTour(1);
     euler.pb(temp);
-    vpi p; // Guardar la entrada y salida de cada nodo
-    F0R(i, n + 1) {
-        p.pb({0, 0});
-    }
+    vpi p;  // Guardar la entrada y salida de cada nodo
+    F0R(i, n + 1) { p.pb({0, 0}); }
 
     F0R(i, euler.size()) {
         if (p[euler[i]].first == 0)
@@ -216,17 +214,17 @@ int main() {
             pl par = lst.query(p[x].first - 1, p[x].second - 1);
             if (par.first >= 0) {
                 res[par.second] = i + 1;
-                lst.update(p[par.second].first - 1, p[par.second].first - 1, -LLINF);
-                lst.update(p[par.second].second - 1, p[par.second].second - 1, -LLINF);
+                lst.update(p[par.second].first - 1, p[par.second].first - 1,
+                           -LLINF);
+                lst.update(p[par.second].second - 1, p[par.second].second - 1,
+                           -LLINF);
             } else {
                 sigue = false;
             }
         }
     }
 
-    F0R(i, n) {
-        cout << res[i + 1] << ENDL;
-    }
+    F0R(i, n) { cout << res[i + 1] << ENDL; }
 
     return 0;
 }

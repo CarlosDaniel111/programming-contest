@@ -50,7 +50,8 @@ const int MOD = 1e9 + 7;
 const int MAXN = 1e6 + 5;
 const int INF = 1 << 28;
 const ll LLINF = 1e18;
-const int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1}; // abajo, derecha, arriba, izquierda
+const int dx[4] = {1, 0, -1, 0},
+          dy[4] = {0, 1, 0, -1};  // abajo, derecha, arriba, izquierda
 
 template <class T>
 using pqg = priority_queue<T, vector<T>, greater<T>>;
@@ -72,8 +73,7 @@ int main() {
         cin >> fila >> colum;
         fila--;
         colum--;
-        if (fila == colum)
-            res++;
+        if (fila == colum) res++;
         res += sumacolum[fila];
         res += sumafila[colum];
         sumafila[fila]++;
