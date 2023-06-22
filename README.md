@@ -20,7 +20,7 @@
 - [**E**: Employees Bonus ⭐](https://github.com/CarlosDaniel111/programming-contest/blob/master/Gran%20Premio%20Mexico%202023%20Primera%20Fecha/E.cpp)
 - **F**: Finding the Best Guess (**No resuelto aún**)
 - [**G**: Growing game](https://github.com/CarlosDaniel111/programming-contest/blob/master/Gran%20Premio%20Mexico%202023%20Primera%20Fecha/G.cpp)
-- **H**: Hell or paradise? (**No resuelto aún**)
+- [**H**: Hell or paradise?](https://github.com/CarlosDaniel111/programming-contest/blob/master/Gran%20Premio%20Mexico%202023%20Primera%20Fecha/H.cpp)
 - [**I**: Improving Chewing Candy⭐](https://github.com/CarlosDaniel111/programming-contest/blob/master/Gran%20Premio%20Mexico%202023%20Primera%20Fecha/I.cpp)
 - [**J**: Jumping Reaction⭐](https://github.com/CarlosDaniel111/programming-contest/blob/master/Gran%20Premio%20Mexico%202023%20Primera%20Fecha/J.cpp)
 - [**K**: Kingdom Power C.⭐](https://github.com/CarlosDaniel111/programming-contest/blob/master/Gran%20Premio%20Mexico%202023%20Primera%20Fecha/K.cpp)
